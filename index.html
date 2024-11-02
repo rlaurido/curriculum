@@ -2,12 +2,10 @@
 <html>
 <head>
 <title>Raúl Laurido - Curriculum Vitae</title>
-Información sobre la página, como la descripción, las
-palabras clave, etc.
-<link>
-Archivos CSS o JavaScript que se utilizan para diseñar
-la página.
-
+<meta name="description" content="Curriculum vitae de Raúl Laurido">
+<meta name="keywords" content="Curriculum, CV, Raúl Laurido, programador">
+<meta name="author" content="Raúl Laurido">
+<link rel="stylesheet" href="stylesheets/style.css">
 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <style>
         #map { height: 400px; width: 600px; }
@@ -18,7 +16,7 @@ la página.
 <body>
     <header>
         <h1> Raúl Isaac Laurido Aguirre </h1>
-        <p>Tu Cargo | Tu Email | Tu Telefono</p>
+        <p>Estudiante universitario | rlaurido@espol.edu.ec | 0969114970</p>
     </header>
     <nav>
         <ul>
@@ -27,46 +25,54 @@ la página.
         <li><a href="#educacion">Educación</a></li>
         <li><a href="#habilidades">Habilidades</a></li>
         <li><a href="#proyectos">Proyectos</a></li>
-        <li><a href="#contactanos">Proyectos</a></li>
+        <li><a href="#contactanos">Contáctame</a></li>
         </ul>
     </nav>
     <main>
         <section id="resumen">
-            <h2>Resumen</h2>
-            <p>Breve descripción de tus habilidades y experiencia.</p>
-            <img src="https://placehold.co/600x400" alt="Placeholder Image" width="600" height="400">
+            <h2 class="subtitle">Resumen</h2>
+            <p>Tengo buenas habilidades para trabajar en equipo y me gusta trabajar bajo presión. Manejo diferentes lenguajes de programación como Python, Java y Javascript. También tengo un nivel de inglés fluido.</p>
+            <img id="photo" src="fotos/FotoVisa.jpeg" alt="Placeholder Image" width="600" height="400" alt="photo">
         </section>
         <section id="experiencia">
-            <h2>Experiencia</h2>
+            <h2 class="subtitle">Experiencia</h2>
+            <p>No cuento con experiencia laboral, pero he realizado diferentes proyectos para materias de carrera, además de haber participado en diferentes hackathons.</p>
         </section>
         <section id="educacion">
-            <h2>Educación</h2>
+            <h2 class="subtitle">Educación</h2>
             <ol>
                 <li>Liceo los Andes</li>
                 <li>ESPOL</li>
             </ol>
+            <div id="map">
+                <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+                <script>
+                    var map = L.map('map').setView([-2.1444544566830332, -79.9672722613265], 17); // Coordenadas iniciales [lat, lon] y nivel de zoom
+                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    }).addTo(map);
+    
+                    var marker = L.marker([-2.1444544566830332, -79.9672722613265]).addTo(map) // Agregar marcador
+                    .bindPopup('FIEC')
+                    .openPopup();
+                </script>
+                </div>
         </section>
         <section id="habilidades">
-            <h2>Habilidades</h2>
-            <iframe width="600" height="400" src="https://www.youtube.com/embed/20SZOJr-y2w" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <h2 class="subtitle">Habilidades</h2>
+            <ul>
+                <li>Manejo de bases de datos relacionales</li>
+                <li>Desarrollo web principiante-intermedio</li>
+                <li>Facilidad para hablar en público</li>
+                <li>Manejo de proyectos</li>
+            </ul>
         </section>
         <section id="proyectos">
-            <h2>Proyectos</h2>
-            <div id="map"></div>
-            <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-            <script>
-                var map = L.map('map').setView([51.505, -0.09], 13); // Coordenadas iniciales [lat, lon] y nivel de zoom
-                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                }).addTo(map);
-
-                var marker = L.marker([51.505, -0.09]).addTo(map) // Agregar marcador
-                .bindPopup('A pretty marker.')
-                .openPopup();
-            </script>
+            <h2 class="subtitle">Proyectos</h2>
+            <iframe width="600" height="400" src="https://www.youtube.com/embed/MsJLTWXh8m8" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </section>
         <section id="contactanos">
-            <h2>Contáctanos</h2>
+            <h2 class="subtitle">Contáctame</h2>
             <form>
                 <label for="nombre">Nombre Completo:</label>
                 <input type="text" id="nombre" name="nombre" required>
@@ -79,10 +85,9 @@ la página.
                 <textarea id="educacion" name="educacion" rows="5"
                 required></textarea>
                 <label>Habilidades Técnicas:</label><br>
-                <input type="checkbox" name="habilidades" value="HTML"> HTML
-                <input type="checkbox" name="habilidades" value="CSS"> CSS
-                <input type="checkbox" name="habilidades" value="JavaScript">
-                JavaScript
+                <div><input type="checkbox" name="habilidades" value="HTML"> <span>HTML</span></div>
+                <div><input type="checkbox" name="habilidades" value="CSS"> <span>CSS</span></div>
+                <div><input type="checkbox" name="habilidades" value="JavaScript"> <span>JavaScript</span></div>
                 <label for="intereses">Intereses:</label>
                 <select id="intereses" name="intereses">
                 <option value="desarrollo">Desarrollo Web</option>
@@ -93,6 +98,9 @@ la página.
                 </form>
                 
         </section>
+        <footer>
+            <p>&copy; 2023 Mi Sitio Web. Todos los derechos reservados.</p>
+        </footer>
     </main>
         
 </body>
